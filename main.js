@@ -4,78 +4,70 @@ const questionsData = [
       a: "Elephant",
       b: "Blue Whale", 
       c: "Giraph",
-      correct: "b"
+      correct: "b",
   },
   {
     question: "What country is apple from",
       a: "USA",
       b: "China", 
       c: "UK",
-      correct: "a"
+      correct: "a",
   },
   {
     question: "What is the best football team in Stockholm",
       a: "AIK",
       b: "Hammarby", 
       c: "Djurgården",
-      correct: "a"
+      correct: "a",
   },
   {
     question: "What is the largest city in Sweden",
       a: "Stockholm",
       b: "Malmö",
       c: "Göteborg",
-      correct: "a"
+      correct: "a",
   },
   {
     question: "What is the capital of Iceland?",
       a: "Purnavijk", 
       b: "Höfnjavik", 
       c: "Reykjavík", 
-      correct: "c"
+      correct: "c",
   },
   {
     question: "How long is an olympic swimming pool?",
       a: "25 meters",
       b: "50 meters",
       c: "75 meters",
-      correct: "b"
+      correct: "b",
   },
   {
     question: "Which animal can be seen on the Porsche logo?",
       a: "Lion",
       b: "Wolf",
       c: "Horse",
-      correct: "c"
+      correct: "c",
   },
   {
     question: "What is the name of the largest ocean on earth",
       a: "Pacific ocean", 
       b: "Arctic ocean", 
       c: "Atlantic ocean",
-      correct: "a"
+      correct: "a",
   },
   {
     question: "What does come down but never goes up?",
       a: "A Ballon",
       b: "A bird",
       c: "Rain",
-      correct: "c"
+      correct: "c",
   },
   {
     question: "What colors are the Swedish flag?",
       a: "Blue",
       b: "White",
       c: "Yellow",
-      correct: "a", 
-      correct1: "c",
-  },
-  {
-    question: "What are the 2 highest mountains called?",
-      a: "Kilimanjaro",
-      b: "Mount Everest",
-      c: "K2",
-      correct: "b",
+      correct: "a",
       correct1: "c"
   }
 ]
@@ -88,6 +80,7 @@ const textB = document.getElementById("b-text");
 const textC = document.getElementById("c-text");
 const answerBtn = document.getElementById("answerBtn")
 const quizContainer = document.querySelector(".quizContainer")
+const darkMode = document.querySelector("#darkMode")
 
 let currentRound = 0;
 let score = 0;
@@ -95,7 +88,9 @@ let score = 0;
 loadQuiz()
 
 answerBtn.addEventListener("click", () =>{
+  points()
   currentRound++;
+  
   if (currentRound < questionsData.length){ 
     selection()
     loadQuiz()
@@ -187,9 +182,44 @@ function scoreBoard() {
 }
 
 function points() {
-
+  let selectedBtn = document.querySelectorAll("[name='choice']");
+  selectedBtn.forEach((item) =>{
+    if(item.checked === true){
+      if(item.id === questionsData[currentRound].correct){
+        score++
+      }else {
+      }
+    }
+  })
+  let choiceCB = document.querySelectorAll("[name='choiceCB']")
+  let choiceArray = []
+  for(let i = 0; i<choiceCB.length; i++){
+    if(choiceCB[i].checked){
+      choiceArray.push(choiceCB[i].className)
+    }
+  }
+  if (questionsData[currentRound].correct[0] === choiceArray[0]){
+    if (questionsData[currentRound].correct1[0] === choiceArray[1]){
+      score++
+      console.log(score)
+    }
+  }
 }
 
 document.querySelector("#refreshBtn").addEventListener("click", () =>{
   location.reload();
+})
+
+let mode = "light"
+
+darkMode.addEventListener("click",() =>{
+  if (mode === "light"){
+    document.querySelector(".container").style.backgroundColor = "darkblue"
+    document.querySelector(".container").style.color = "white"
+    mode = "dark"
+  } else if(mode === "dark"){
+    document.querySelector(".container").style.backgroundColor = "white"
+    document.querySelector(".container").style.color = "black"
+    mode = "light"
+  }
 })
