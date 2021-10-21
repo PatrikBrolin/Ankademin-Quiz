@@ -1,0 +1,21 @@
+body html {
+  height: 100%;
+  width: 100%;
+  background-color: lavenderblush;
+}
+.container{
+  max-width: 900px;
+  height: 200vh;
+  max-height: 100%;
+  margin: auto;
+  background-color: blanchedalmond;
+  text-align: center;
+}
+
+ul{
+  list-style: none;
+}
+
+[name=choiceCB] {
+  display: none;
+}

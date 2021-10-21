@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="quizContainer">
+      <h2 id="question">Question Text</h2>
+      <ul>
+        <li>
+          <input type="checkbox" class=a id=cbA name=choiceCB>
+          <input type="radio" class="a" name="choice"> 
+          <label id="a-text" for="a">Option</label>
+        </li>
+        <li>
+          <input type="checkbox" class=b id=cbB name=choiceCB>
+          <input type="radio" class="b" id="b" name="choice"> 
+          <label id="b-text" for="b">Option</label>
+        </li>
+        <li>
+          <input type="checkbox" class=c id=cbC name=choiceCB>
+          <input type="radio" class="c" id="c" name="choice"> 
+          <label id="c-text" for="c">Option</label>
+        </li>
+      </ul>
+      <button id="answerBtn">Answer</button>
+    </div>
+    <div class="answerPage"></div>
+    <br>
+    <button id="refreshBtn">Refresh Page here!</button>
+  </div>
+    
+  <script src="main.js"></script>
+</body>
+</html>
