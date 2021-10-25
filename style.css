@@ -1,17 +1,17 @@
-body html {
+body {
   height: 100%;
   width: 100%;
+  background-color: #ede0d4;
 
 }
-#darkMode {
-  margin: 0;
-}
+
 .container{
+  margin-top: 100px;
   max-width: 900px;
-  height: 200vh;
-  max-height: 100%;
   margin: auto;
+  margin-top: 200px;
   text-align: center;
+  background-color: #ede0d4;
 }
 
 .quizContainer{
@@ -23,6 +23,7 @@ body html {
   width: 350px;
   text-align: center;
   box-shadow: 0 0 10px;
+  background-color: #faedcd;
 }
 
 .quizContainer > ul{
@@ -54,7 +55,6 @@ input[type='radio']:after {
   visibility: visible;
   border: 2px solid black;
 }
-
 input[type='radio']:checked:after {
   width: 20px;
   height: 20px;
@@ -68,6 +68,7 @@ input[type='radio']:checked:after {
   visibility: visible;
   border: 3px solid ;
 }
+
 input[type='checkbox']:after {
   width: 20px;
   height: 20px;
@@ -80,7 +81,6 @@ input[type='checkbox']:after {
   visibility: visible;
   border: 2px solid black;
 }
-
 input[type='checkbox']:checked:after {
   width: 20px;
   height: 20px;
@@ -93,8 +93,6 @@ input[type='checkbox']:checked:after {
   visibility: visible;
   border: 3px solid ;
 }
-
-
 .quizContainer li{
   font-size: 18px;
   display: grid;
@@ -109,7 +107,6 @@ input[type='checkbox']:checked:after {
   margin-top: 0px;
   line-height: 50px;
 }
-
 ul {
   list-style: none;
 }
@@ -119,16 +116,49 @@ ul {
   height: 70px;
   bottom: 0px;
   border-radius: 0 0 12px 12px;
+  background-color: #bc6c25;
+  font-size: 24px;
+  
 }
-
+#answerBtn:hover{
+  background-color: lawngreen;
+  transition: 3s;
+}
 button{
   cursor: pointer;
 }
-
 [name=choiceCB] {
   display: none;
 }
-
 .answerPage {
   display: none;
 }
+.answerPage #answers ul{
+  
+  padding: 10px 0 0 0 ;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+.answerPage #answers li{
+  font-size: 18;
+  font-weight: normal;
+}
+.normalBtn{
+ height: 30px;
+ width: 120px;
+ border-bottom: 1px solid;
+ border-left: 0px;
+ border-right: 0px;
+ border-top: 1px solid;
+}
+.normalBtn:hover{
+  border-bottom: 0px ;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-top: 0px;
+  transition: 1s;
+  background-color: lawngreen;
+  width: 350px;
+  border-radius: 12px;
+ }

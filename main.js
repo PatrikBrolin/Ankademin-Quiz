@@ -8,7 +8,7 @@ const questionsData = [
       type: "radio"
   },
   {
-    question: "What country is apple from",
+    question: "What country is apple from?",
       a: "USA",
       b: "China", 
       c: "UK",
@@ -16,7 +16,7 @@ const questionsData = [
       type: "radio"
   },
   {
-    question: "What is the best football team in Stockholm",
+    question: "What is the best football team in Stockholm?",
       a: "AIK",
       b: "Hammarby", 
       c: "Djurgården",
@@ -24,7 +24,7 @@ const questionsData = [
       type: "radio"
   },
   {
-    question: "What is the largest city in Sweden",
+    question: "What is the largest city in Sweden?",
       a: "Stockholm",
       b: "Malmö",
       c: "Göteborg",
@@ -56,7 +56,7 @@ const questionsData = [
       type: "radio"
   },
   {
-    question: "What is the name of the largest ocean on earth",
+    question: "What is the name of the largest ocean on earth?",
       a: "Pacific ocean", 
       b: "Arctic ocean", 
       c: "Atlantic ocean",
@@ -105,6 +105,7 @@ answerBtn.addEventListener("click", () =>{
     selection()
     loadQuiz()
   } else {
+    document.querySelector(".container").style.marginTop = "0px";
     quizContainer.style.display = "none";
     scoreBoard()
   }
@@ -237,12 +238,21 @@ let mode = "light"
 
 darkMode.addEventListener("click",() =>{
   if (mode === "light"){
-    document.querySelector(".container").style.backgroundColor = "darkblue"
+    document.querySelector("body").style.backgroundColor = "#001219"
+    document.querySelector(".container").style.backgroundColor = "#001219"
     document.querySelector(".container").style.color = "white"
+    document.querySelector(".quizContainer").style.backgroundColor = "#005f73"
+    document.querySelector("#answerBtn").style.backgroundColor = "#003049"
+    document.querySelector("#answerBtn").style.color = "white"
+  
     mode = "dark"
   } else if(mode === "dark"){
-    document.querySelector(".container").style.backgroundColor = "white"
-    document.querySelector(".container").style.color = "black"
+    document.querySelector("body").style.backgroundColor = "#ede0d4"
+    document.querySelector(".container").style.backgroundColor = "#ede0d4"
+    document.querySelector(".container").style.color = "Black"
+    document.querySelector(".quizContainer").style.backgroundColor = "#faedcd"
+    document.querySelector("#answerBtn").style.backgroundColor = "#bc6c25";
+    document.querySelector("#answerBtn").style.color = "Black"
     mode = "light"
   }
 })
