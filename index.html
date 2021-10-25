@@ -14,8 +14,8 @@
       <h2 id="question">Question Text</h2>
       <ul>
         <li>
-          <input type="checkbox" class=a id=cbA name=choiceCB>
-          <input type="radio" class="a" id="a" name="choice"> 
+          <input type="checkbox" class=a id=cbA name=choiceCB >
+          <input type="radio" class="a" id="a" name="choice" checked> 
           <label id="a-text" for="a">Option</label>
         </li>
         <li>
@@ -31,7 +31,12 @@
       </ul>
       <button id="answerBtn">Answer</button>
     </div>
-    <div class="answerPage"></div>
+    <div class="answerPage">
+      <div id="answers"></div>
+      <div id="scores">
+        <button id="scoreBtn">See your Score</button>
+      </div>
+    </div>
     <br>
     <button id="refreshBtn">Refresh Page here!</button>
   </div>

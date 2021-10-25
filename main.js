@@ -5,6 +5,7 @@ const questionsData = [
       b: "Blue Whale", 
       c: "Giraph",
       correct: "b",
+      type: "radio"
   },
   {
     question: "What country is apple from",
@@ -12,6 +13,7 @@ const questionsData = [
       b: "China", 
       c: "UK",
       correct: "a",
+      type: "radio"
   },
   {
     question: "What is the best football team in Stockholm",
@@ -19,6 +21,7 @@ const questionsData = [
       b: "Hammarby", 
       c: "Djurgården",
       correct: "a",
+      type: "radio"
   },
   {
     question: "What is the largest city in Sweden",
@@ -26,6 +29,7 @@ const questionsData = [
       b: "Malmö",
       c: "Göteborg",
       correct: "a",
+      type: "radio"
   },
   {
     question: "What is the capital of Iceland?",
@@ -33,6 +37,7 @@ const questionsData = [
       b: "Höfnjavik", 
       c: "Reykjavík", 
       correct: "c",
+      type: "radio"
   },
   {
     question: "How long is an olympic swimming pool?",
@@ -40,6 +45,7 @@ const questionsData = [
       b: "50 meters",
       c: "75 meters",
       correct: "b",
+      type: "radio"
   },
   {
     question: "Which animal can be seen on the Porsche logo?",
@@ -47,6 +53,7 @@ const questionsData = [
       b: "Wolf",
       c: "Horse",
       correct: "c",
+      type: "radio"
   },
   {
     question: "What is the name of the largest ocean on earth",
@@ -54,6 +61,7 @@ const questionsData = [
       b: "Arctic ocean", 
       c: "Atlantic ocean",
       correct: "a",
+      type: "radio"
   },
   {
     question: "What does come down but never goes up?",
@@ -61,6 +69,7 @@ const questionsData = [
       b: "A bird",
       c: "Rain",
       correct: "c",
+      type: "radio"
   },
   {
     question: "What colors are the Swedish flag?",
@@ -68,7 +77,8 @@ const questionsData = [
       b: "White",
       c: "Yellow",
       correct: "a",
-      correct1: "c"
+      correct1: "c",
+      type: "cb"
   }
 ]
 let answerArray = [];
@@ -81,6 +91,7 @@ const textC = document.getElementById("c-text");
 const answerBtn = document.getElementById("answerBtn")
 const quizContainer = document.querySelector(".quizContainer")
 const darkMode = document.querySelector("#darkMode")
+const scoreBtn = document.querySelector("#scoreBtn")
 
 let currentRound = 0;
 let score = 0;
@@ -90,7 +101,6 @@ loadQuiz()
 answerBtn.addEventListener("click", () =>{
   points()
   currentRound++;
-  
   if (currentRound < questionsData.length){ 
     selection()
     loadQuiz()
@@ -105,7 +115,7 @@ function loadQuiz() {
   textA.innerText = questionsData[currentRound].a
   textB.innerText = questionsData[currentRound].b
   textC.innerText = questionsData[currentRound].c
-  if (currentRound > 8)
+  if (questionsData[currentRound].type === "cb")
   {
     let radioBtn = document.querySelectorAll("[name='choice']")
     radioBtn.forEach((btnradio) =>{
@@ -114,6 +124,16 @@ function loadQuiz() {
     let choiceCB = document.querySelectorAll("[name='choiceCB']")
     choiceCB.forEach((btnCB) =>{
       btnCB.style.display = "inline"
+    })
+  }
+  else {
+    let choiceCB = document.querySelectorAll("[name='choiceCB']")
+    choiceCB.forEach((btnCB) =>{
+      btnCB.style.display = "none"
+    })
+    let radioBtn = document.querySelectorAll("[name='choice']")
+    radioBtn.forEach((btnradio) =>{
+      btnradio.style.display = "inline";
     })
   }
 }
@@ -136,7 +156,10 @@ function selection() {
 }
 
 function scoreBoard() {
+  
   let answerPage = document.querySelector(".answerPage");
+  answerPage.style.display = "inline"
+  let answers = document.querySelector("#answers")
   questionsData.forEach((item) =>{
     let scoreHolder = document.createElement("ul")
     scoreHolder.innerText = item.question
@@ -146,7 +169,7 @@ function scoreBoard() {
     answer2.innerText = item.b
     let answer3 = document.createElement("li");
     answer3.innerText = item.c
-    answerPage.appendChild(scoreHolder)
+    answers.appendChild(scoreHolder)
     scoreHolder.appendChild(answer1)
     scoreHolder.appendChild(answer2)
     scoreHolder.appendChild(answer3)
@@ -221,5 +244,22 @@ darkMode.addEventListener("click",() =>{
     document.querySelector(".container").style.backgroundColor = "white"
     document.querySelector(".container").style.color = "black"
     mode = "light"
+  }
+})
+
+scoreBtn.addEventListener("click", () =>{
+  scoreBtn.style.display = "none"
+  let scores = document.querySelector("#scores")
+  let yourScore = document.createElement("h2");
+  yourScore.innerText = `You got ${score} out of ${currentRound} points`
+  scores.appendChild(yourScore)
+  console.log(parseFloat(score)/parseFloat(currentRound))
+  if(parseFloat(score)/parseFloat(currentRound) >= 0.8){
+    yourScore.style.color = "green"
+  }
+  else if (parseFloat(score)/parseFloat(currentRound) >= 0.6){
+    yourScore.style.color = "orange"
+  } else {
+    yourScore.style.color = "red"
   }
 })
