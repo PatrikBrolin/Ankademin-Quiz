@@ -1,19 +1,128 @@
 body html {
   height: 100%;
   width: 100%;
-  background-color: lavenderblush;
+
+}
+#darkMode {
+  margin: 0;
 }
 .container{
   max-width: 900px;
   height: 200vh;
   max-height: 100%;
   margin: auto;
-  background-color: blanchedalmond;
   text-align: center;
 }
 
-ul{
+.quizContainer{
+  display: grid;
+  margin: auto;
+  border-radius: 12px;
+  border: 1px solid;
+  height: 250px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 10px;
+}
+
+.quizContainer > ul{
   list-style: none;
+  display: flex;
+  padding-left: 0px;
+  height: 80px;
+  margin: 0px;
+  vertical-align: center;
+  text-align: center;
+}
+.quizContainer > ul input{
+  margin: auto;
+  cursor: pointer;
+  border: 0px;
+  width: 100%;
+  height: 1.5rem;
+}
+input[type='radio']:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  top: 0px;
+  left: 46px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid black;
+}
+
+input[type='radio']:checked:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  top: -1px;
+  left: 45px;
+  position: relative;
+  background-color:lawngreen;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 3px solid ;
+}
+input[type='checkbox']:after {
+  width: 20px;
+  height: 20px;
+  top: 0px;
+  left: 46px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid black;
+}
+
+input[type='checkbox']:checked:after {
+  width: 20px;
+  height: 20px;
+  top: -1px;
+  left: 45px;
+  position: relative;
+  background-color:lawngreen;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 3px solid ;
+}
+
+
+.quizContainer li{
+  font-size: 18px;
+  display: grid;
+  width: 116px;
+  margin: auto;
+}
+.quizContainer #question{
+  width: 350px;
+  height: 100px;
+  word-wrap: break-word;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  line-height: 50px;
+}
+
+ul {
+  list-style: none;
+}
+#answerBtn {
+  align-self: flex-end;
+  width: 100%;
+  height: 70px;
+  bottom: 0px;
+  border-radius: 0 0 12px 12px;
+}
+
+button{
+  cursor: pointer;
 }
 
 [name=choiceCB] {
