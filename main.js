@@ -72,7 +72,7 @@ const questionsData = [
       type: "radio"
   },
   {
-    question: "What colors are the Swedish flag?",
+    question: "What colors are in the Swedish flag?",
       a: "Blue",
       b: "White",
       c: "Yellow",
@@ -251,7 +251,7 @@ darkMode.addEventListener("click",() =>{
     document.querySelector(".container").style.backgroundColor = "#ede0d4"
     document.querySelector(".container").style.color = "Black"
     document.querySelector(".quizContainer").style.backgroundColor = "#faedcd"
-    document.querySelector("#answerBtn").style.backgroundColor = "#bc6c25";
+    document.querySelector("#answerBtn").style.backgroundColor = "ivory";
     document.querySelector("#answerBtn").style.color = "Black"
     mode = "light"
   }
@@ -262,6 +262,7 @@ scoreBtn.addEventListener("click", () =>{
   let scores = document.querySelector("#scores")
   let yourScore = document.createElement("h2");
   yourScore.innerText = `You got ${score} out of ${currentRound} points`
+  yourScore.style.fontSize = "40px"
   scores.appendChild(yourScore)
   console.log(parseFloat(score)/parseFloat(currentRound))
   if(parseFloat(score)/parseFloat(currentRound) >= 0.8){
