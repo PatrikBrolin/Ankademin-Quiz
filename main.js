@@ -160,7 +160,13 @@ function scoreBoard() {
   
   let answerPage = document.querySelector(".answerPage");
   answerPage.style.display = "inline"
+  let header = document.createElement("h2");
+  header.innerText = "Correct answers"
+  let yourScore = document.createElement("p")
+  yourScore.innerText = "(scroll down to se your score)";
   let answers = document.querySelector("#answers")
+  answers.appendChild(header)
+  answers.appendChild(yourScore)
   questionsData.forEach((item) =>{
     let scoreHolder = document.createElement("ul")
     scoreHolder.innerText = item.question
