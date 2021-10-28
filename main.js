@@ -81,9 +81,8 @@ const questionsData = [
       type: "cb"
   }
 ]
-let answerArray = [];
-let letterArray =[];
 
+//getting all elements from HTML file
 const questionEl = document.getElementById("question");
 const textA = document.getElementById("a-text");
 const textB = document.getElementById("b-text");
@@ -93,17 +92,23 @@ const quizContainer = document.querySelector(".quizContainer")
 const darkMode = document.querySelector("#darkMode")
 const scoreBtn = document.querySelector("#scoreBtn")
 
+// variables i need to store information in
+
 let currentRound = 0;
 let score = 0;
+let mode = "light"
 
 loadQuiz()
 
+//button to answer question and loadout new questions
 answerBtn.addEventListener("click", () =>{
   points()
   currentRound++;
+  //while there is still questions selection and loadquiz function will run
   if (currentRound < questionsData.length){ 
-    selection()
+ 
     loadQuiz()
+    //when there is no more question the scoreBoard function will run
   } else {
     document.querySelector(".container").style.marginTop = "0px";
     quizContainer.style.display = "none";
@@ -116,6 +121,7 @@ function loadQuiz() {
   textA.innerText = questionsData[currentRound].a
   textB.innerText = questionsData[currentRound].b
   textC.innerText = questionsData[currentRound].c
+  // checking if question involves radio or checkbox
   if (questionsData[currentRound].type === "cb")
   {
     let radioBtn = document.querySelectorAll("[name='choice']")
@@ -138,23 +144,8 @@ function loadQuiz() {
     })
   }
 }
+// function to load out the scoreboard and show the correct answers to the quiz
 
-function selection() {
-  let selectedBtn = document.querySelectorAll("[name='choice']");
-  selectedBtn.forEach((item) => {
-    if (item.checked){
-      answerArray.push(item.nextElementSibling.innerText)
-      letterArray.push(item.className)
-    }
-  });
-  let choiceCB = document.querySelectorAll("[name='choiceCB']")
-  choiceCB.forEach((elem)=> {
-    if (elem.checked){
-      answerArray.push(elem.nextElementSibling.nextElementSibling.innerText)
-      letterArray.push(elem.className)
-    }
-  })
-}
 
 function scoreBoard() {
   
@@ -210,8 +201,9 @@ function scoreBoard() {
     }
   })
 }
-
+// function to add on points i correct answer is given
 function points() {
+  // points for correct radio button
   let selectedBtn = document.querySelectorAll("[name='choice']");
   selectedBtn.forEach((item) =>{
     if(item.checked === true){
@@ -221,6 +213,7 @@ function points() {
       }
     }
   })
+  //points for correct checkbox question
   let choiceCB = document.querySelectorAll("[name='choiceCB']")
   let choiceArray = []
   for(let i = 0; i<choiceCB.length; i++){
@@ -231,17 +224,16 @@ function points() {
   if (questionsData[currentRound].correct[0] === choiceArray[0]){
     if (questionsData[currentRound].correct1[0] === choiceArray[1]){
       score++
-      console.log(score)
     }
   }
 }
 
+// button to refresh the site
 document.querySelector("#refreshBtn").addEventListener("click", () =>{
   location.reload();
 })
 
-let mode = "light"
-
+// button to change dark or light mode
 darkMode.addEventListener("click",() =>{
   if (mode === "light"){
     document.querySelector("body").style.backgroundColor = "#001219"
@@ -263,6 +255,7 @@ darkMode.addEventListener("click",() =>{
   }
 })
 
+// button to declare how many points was earned
 scoreBtn.addEventListener("click", () =>{
   scoreBtn.style.display = "none"
   let scores = document.querySelector("#scores")
@@ -270,7 +263,7 @@ scoreBtn.addEventListener("click", () =>{
   yourScore.innerText = `You got ${score} out of ${currentRound} points`
   yourScore.style.fontSize = "40px"
   scores.appendChild(yourScore)
-  console.log(parseFloat(score)/parseFloat(currentRound))
+  // change color on text depending on score
   if(parseFloat(score)/parseFloat(currentRound) >= 0.8){
     yourScore.style.color = "green"
   }

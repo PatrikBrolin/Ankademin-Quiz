@@ -4,7 +4,6 @@ body {
   background-color: #ede0d4;
 
 }
-
 .container{
   margin-top: 100px;
   max-width: 900px;
@@ -13,7 +12,6 @@ body {
   text-align: center;
   background-color: #ede0d4;
 }
-
 .quizContainer{
   display: grid;
   margin: auto;
@@ -25,7 +23,6 @@ body {
   box-shadow: 0 0 10px;
   background-color: #faedcd;
 }
-
 .quizContainer > ul{
   list-style: none;
   display: flex;
@@ -68,7 +65,6 @@ input[type='radio']:checked:after {
   visibility: visible;
   border: 3px solid ;
 }
-
 input[type='checkbox']:after {
   width: 20px;
   height: 20px;
@@ -119,13 +115,11 @@ ul {
   background-color: ivory;
   font-size: 24px;
 }
-
 #answerBtn:hover{
   background-color: black;
   transition: 1s;
   color:white
 }
-
 button{
   cursor: pointer;
 }
